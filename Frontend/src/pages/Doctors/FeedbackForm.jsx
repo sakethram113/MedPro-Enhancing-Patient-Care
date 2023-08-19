@@ -5,7 +5,7 @@ const FeedbackForm = () => {
 
     const [rating,setRating] = useState(0);
     const [hover,setHover] = useState(0);
-    const [reviewtext,setReviewText] = useState("");
+    const [reviewtext,setReviewText] = useState(" ");
 
     const handleSubmitReview = async e =>{
         e.preventDefault();
@@ -17,32 +17,30 @@ const FeedbackForm = () => {
             How would you rate this experience?*
         </h3>
 
-        <div>
-            {[...Array(5).keys()].map(( _ , index) => {
+        <div>  
+            {[...Array(5).keys()].map((_, index) => {
                 index += 1;
 
                 return (
-                    <button 
-                     key={index} 
-                     type='button'
-                     className={`${
-                        index <= ((rating && hover) || hover)
-                        ? "text-yellowColor"
-                        : "text-gray-400"
-                     }bg-transparent border-none outline-none text-[22px] cursor-pointer`}
-                     onClick={()=>setRating(index)}
-                     onMouseEnter={()=>setHover(index)}
-                     onMouseLeave={()=>setHover(rating)}
-                     onDoubleClick={()=>{
+                    <button
+                        key={index}
+                        type='button'
+                        className={`${index <= ((rating && hover) || hover)
+                            ? "text-yellowColor"
+                            : "text-gray-400"}bg-transparent border-none outline-none text-[22px] cursor-pointer`}
+                        onClick={() => setRating(index)}
+                        onMouseEnter={() => setHover(index)}
+                        onMouseLeave={() => setHover(rating)}
+                        onDoubleClick={() => {
                             setHover(0);
                             setRating(0);
-                        }}
+                        } }
                     >
                         <span>
-                            <AiFillStar/>
+                            <AiFillStar />
                         </span>
                     </button>
-                )
+                );
             })}
         </div>
     </div>
