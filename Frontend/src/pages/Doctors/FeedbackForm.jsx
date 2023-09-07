@@ -25,19 +25,21 @@ const FeedbackForm = () => {
                     <button
                         key={index}
                         type='button'
-                        className={`${index <= ((rating && hover) || hover)
+                        className={`${
+                          index <= ((rating && hover) || hover)
                             ? "text-yellowColor"
-                            : "text-gray-400"}bg-transparent border-none outline-none text-[22px] cursor-pointer`}
+                            : "text-gray-400"
+                        }bg-transparent border-none outline-none text-[22px] cursor-pointer `}
                         onClick={() => setRating(index)}
                         onMouseEnter={() => setHover(index)}
                         onMouseLeave={() => setHover(rating)}
                         onDoubleClick={() => {
                             setHover(0);
                             setRating(0);
-                        } }
-                    >
+                        }}
+                        >
                         <span>
-                            <AiFillStar />
+                          <AiFillStar />
                         </span>
                     </button>
                 );
