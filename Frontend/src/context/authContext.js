@@ -17,14 +17,20 @@ const authReducer = (state, action) =>{
                 token: null,
             };
 
-            case 'LOGIN_SUCCESS':
-                return{
-                    user:action.payload.user,
-                    role:action.payload.role,
-                    token:action.payload.token
-                }
+        case 'LOGIN_SUCCESS':
+            return{
+                user:action.payload.user,
+                role:action.payload.role,
+                token:action.payload.token
+            }
+        case 'LOGOUT':
+            return {
+                user: null,
+                role: null,
+                token: null,
+            };
 
         default:
-            break;
+            return state;
     }
 }
