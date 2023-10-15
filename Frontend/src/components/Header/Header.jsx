@@ -1,9 +1,9 @@
 import {useEffect, useRef, useContext} from 'react'
 import logo from '../../assets/images/logo.png'
 import {NavLink, Link} from 'react-router-dom'
-import userImg from '../../assets/images/avatar-icon.png'
 import {BiMenu} from 'react-icons/bi'
 import { authContext } from '../../context/AuthContext'
+import HashLoader from 'react-spinners/HashLoader'
 
 const navLinks = [
   {
@@ -85,11 +85,10 @@ const Header = () => {
                 <figure className='w-[35px] h-[35px] rounded-full'>
                   <img src={user?.photo} className='w-full rounded-full' alt="" />
                 </figure>
-                <h2>{user?.name}</h2>
               </Link>
             </div> : <Link to='/login'>
               <button className='bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]'>
-                Login
+                {loading ? <HashLoader size={25} color = '#fff'/> : 'Login'}
               </button>
             </Link>
             }
