@@ -1,4 +1,5 @@
-import User from '../models/UserSchema.js'
+import User from '../models/UserSchema.js';
+import BookingSchema from '../models/BookingSchema.js';
 
 export const updateUser = async(req,res)=>{
     const id = req.params.id
@@ -87,6 +88,21 @@ export const getUserProfile = async(req,res) => {
         const {password, ...rest} = user._doc
         res.status(200).json({success:true, message:'Profile info is getting', data:{...rest}})
     } catch (err) {
-        res.status(404).json({success:false, message: 'User not found'})
+        res.status(500).json({success:false, message: 'Something went wrong, cannot get'})
+    }
+}
+
+export const getMyAppointments = async(res, req) => {
+    try {
+
+        // step-1 : retrieve appointments from booking for user
+        const bookings = await Booking.find({user: req.userId})
+        // step-2 : extract doctor ids from appointment bookings
+        // step-3 : retrieve doctors using doctor ids
+
+
+    
+    } catch (error) {
+        
     }
 }
