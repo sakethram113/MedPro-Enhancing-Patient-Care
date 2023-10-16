@@ -101,11 +101,12 @@ export const getMyAppointments = async(res, req) => {
         // step-2 : extract doctor ids from appointment bookings
         const doctorIds = bookings.map(el => el.doctor.id)
         // step-3 : retrieve doctors using doctor ids
-        const doctors = await Doctor.find()
+        const doctors = await Doctor.find({_id: {$in:doctorIds}}).select('-password')
 
-
+        res.status(200).json({success: true, message:'Appointments are getting', data:doctors})
     
     } catch (error) {
-        
+        res.status(500).json({success:false, message: 'Something went wrong, cannot get'})
+
     }
 }
