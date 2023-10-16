@@ -98,6 +98,7 @@ export const getMyAppointments = async(res, req) => {
         // step-1 : retrieve appointments from booking for user
         const bookings = await Booking.find({user: req.userId})
         // step-2 : extract doctor ids from appointment bookings
+        const doctorIds = bookings.map(el => el.doctor.id)
         // step-3 : retrieve doctors using doctor ids
 
 
