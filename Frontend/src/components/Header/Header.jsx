@@ -1,4 +1,4 @@
-import {useEffect, useRef, useContext} from 'react'
+import {useEffect, useRef, useContext, useState} from 'react'
 import logo from '../../assets/images/logo.png'
 import {NavLink, Link} from 'react-router-dom'
 import {BiMenu} from 'react-icons/bi'
@@ -29,6 +29,7 @@ const Header = () => {
   const headerRef = useRef(null)
   const menuRef = useRef(null)
   const {user, role, token} = useContext(authContext)
+  const [loading, setLoading] = useState(false)
 
   const handleStickyHeader = ()=>{
     window.addEventListener('scroll', ()=>{
