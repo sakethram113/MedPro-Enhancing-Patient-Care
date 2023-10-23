@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react'
+import { token } from '../config'
 
 const useFetchData = (url) => {
 
@@ -9,16 +10,35 @@ const useFetchData = (url) => {
 
     useEffect(()=>{
         const fetchData = async ()=>{
-            const res = await fetch(url, {
-                headers:{Authorization : `Bearer ${token}`}
-            })
+
+            setLoading(true)
+            try {
+                const res = await fetch(url, {
+                    headers:{Authorization : `Bearer ${token}`}
+                })
+                const result = await res.json()
+    
+                if(!res.ok){
+                    throw new Error(result.message + '🤮')
+                }
+
+                setData(result.data)
+                setLoading(false)
+            } catch (err) {
+                setLoading(false)
+                setError(err.message)
+            }
         } 
-    }, [])
+
+        fetchData()
+    }, [url])
 
 
-  return (
-    <div>useFetchData</div>
-  )
+  return {
+    data,
+    err,
+    loading,
+  }
 }
 
 export default useFetchData
