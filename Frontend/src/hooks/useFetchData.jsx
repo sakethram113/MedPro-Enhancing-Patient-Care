@@ -24,9 +24,9 @@ const useFetchData = (url) => {
 
                 setData(result.data)
                 setLoading(false)
-            } catch (err) {
+            } catch (error) {
                 setLoading(false)
-                setError(err.message)
+                setError(error.message)
             }
         } 
 
@@ -36,7 +36,7 @@ const useFetchData = (url) => {
 
   return {
     data,
-    err,
+    error,
     loading,
   }
 }
