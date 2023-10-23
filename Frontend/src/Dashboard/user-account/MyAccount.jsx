@@ -34,7 +34,7 @@ const MyAccount = () => {
         </div>
       </div>
 
-      <div className="md:cols-span-2 md:px-[30px]">
+      <div className="md:col-span-2 md:px-[30px]">
         <div>
           <button className='p-2 mr-5 px-5 rounded-md text-headingColor font-semibold text-[16px] leading-7 border border-solid border-primaryColor '>
             My Bookings
