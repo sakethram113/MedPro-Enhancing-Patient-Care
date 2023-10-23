@@ -1,6 +1,8 @@
 import {useContext, useState} from 'react'
 import userImg from '../../assets/images/doctor-img01.png'
 import {authContext} from '../../context/AuthContext'
+import MyBookings from './MyBookings'
+import Profile from './Profile'
 
 const MyAccount = () => {
 
@@ -13,7 +15,8 @@ const MyAccount = () => {
     })
   }
 
-  return <div className='max-w-[1170px] px-5 mx-auto'>
+  return (
+  <div className='max-w-[1170px] px-5 mx-auto'>
     <div className="grid md:grid-cols-3 gap-10">
       <div className="pb-[50px] px-[30px] rounded-md">
         <div className="flex items-center justify-center">
@@ -46,9 +49,21 @@ const MyAccount = () => {
             Profile Settings
           </button>
         </div>
+
+        {
+          tab === 'bookings' && <MyBookings/>
+        }
+        {
+          tab === 'settings' && <Profile/>
+        }
+
+
+
+
       </div>
     </div>
   </div>
+  )
   
 }
 
