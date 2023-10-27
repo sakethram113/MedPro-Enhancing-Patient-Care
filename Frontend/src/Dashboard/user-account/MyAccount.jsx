@@ -6,6 +6,7 @@ import Profile from './Profile'
 import useGetProfile from '../../hooks/useFetchData'
 import { BASE_URL } from '../../config'
 import Loading from '../../components/Loader/Loading'
+import Error from '../../components/Error/Error'
 
 const MyAccount = () => {
 
@@ -27,6 +28,7 @@ const MyAccount = () => {
     <div className='max-w-[1170px] px-5 mx-auto'>
 
       {loading && <Loading/>}
+      {error && <Error/>}
     {
       !loading && !error && <div className="grid md:grid-cols-3 gap-10">
       <div className="pb-[50px] px-[30px] rounded-md">
