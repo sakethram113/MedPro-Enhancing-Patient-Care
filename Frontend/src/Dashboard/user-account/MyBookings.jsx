@@ -21,7 +21,7 @@ const MyBookings = () => {
           ))}
           </div>
           )}
-         {!loading && !error && appointments.length===0 && (
+         {!loading && !error && appointments.length === 0 && (
           <h2>You did not book any doctor yet!!</h2>
          )}
     </div>
